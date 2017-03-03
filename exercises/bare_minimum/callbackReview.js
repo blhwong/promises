@@ -22,12 +22,22 @@ var pluckFirstLineFromFile = function (filePath) {
       var result = content.split('\n')[0];
     }
     cb(err, result);
-  })
+  });
 };
 
 // This function should retrieve the status code of a GET request to `url`
 var getStatusCode = function (url) {
   // TODO
+  var cb = arguments[1];
+  request(url, function(err, response, body) {
+    // console.log(response.statusCode);
+    if (err) {
+      console.log('Error');
+      cb(err);
+    } else {
+      cb(err, response.statusCode);
+    }
+  });
 };
 
 // Export these functions so we can test them and reuse them in later exercises
