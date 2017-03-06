@@ -62,14 +62,13 @@ var readFileAndMakeItFunnyAsync = function(filePath) {
       if (err) {
         reject(err);
       } else {
+        var funnyFile = file.split('\n')
+          .map(function(line) {
+            return line + ' lol';
+          })
+          .join('\n');
 
-      var funnyFile = file.split('\n')
-        .map(function(line) {
-          return line + ' lol';
-        })
-        .join('\n');
-
-      resolve(funnyFile);
+        resolve(funnyFile);
       }
     });
   });
